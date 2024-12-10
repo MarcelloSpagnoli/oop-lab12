@@ -52,7 +52,7 @@ public class GUI extends JFrame {
         }*/
         marked.stream()
             .map(x -> x.getX() * logics.getSize() + x.getY())
-            .peek(y -> cells.get(y).setText("*"));
+            .forEach(y -> cells.get(y).setText("*"));
 
     }
 
