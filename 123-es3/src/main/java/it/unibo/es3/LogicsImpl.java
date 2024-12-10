@@ -66,9 +66,4 @@ public class LogicsImpl implements Logics{
     public Set<Pair<Integer, Integer>> getMarked() {
         return Collections.unmodifiableSet(marked);
     }
-
-    private Boolean areNear(Pair<Integer,Integer> pair1, Pair<Integer,Integer> pair2) {
-        return Math.pow(pair1.getX() - pair2.getX(), 2) <= 1 && Math.pow(pair1.getY() - pair2.getY(), 2) <= 1 ;
-    }
-
 }
