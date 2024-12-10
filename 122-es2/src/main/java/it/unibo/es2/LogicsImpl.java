@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 public class LogicsImpl implements Logics{
 
-    List<List<String>> map;
+    List<List<Boolean>> map;
 
     public LogicsImpl(final Integer size) {
         // this.map = new ArrayList<>(Collections.nCopies(size, new ArrayList<>(Collections.nCopies(size, " "))));
@@ -16,12 +16,12 @@ public class LogicsImpl implements Logics{
         */ 
         this.map = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            this.map.add(new ArrayList<>(Collections.nCopies(size, " ")));
+            this.map.add(new ArrayList<>(Collections.nCopies(size, false)));
         }
     }
 
     @Override
-    public String hit(Pair<Integer, Integer> coord) {
+    public Boolean hit(Pair<Integer, Integer> coord) {
         setCell(coord);
         return getCell(coord);
     }
@@ -29,26 +29,22 @@ public class LogicsImpl implements Logics{
     @Override
     public Boolean toQuit() {
         boolean lines = map.stream()
-            .anyMatch(x -> x.stream().allMatch(y -> y.equals("*")));
+            .anyMatch(x -> x.stream().allMatch(y -> y));
 
         boolean columns = IntStream.iterate(0, x -> x+1)
             .limit(map.size())
-            .anyMatch(x -> map.stream().allMatch(y -> y.get(x).equals("*")));
+            .anyMatch(x -> map.stream().allMatch(y -> y.get(x)));
         
         return lines || columns;
     }
 
-    private String getCell(Pair<Integer, Integer> coord) {
+    private Boolean getCell(Pair<Integer, Integer> coord) {
         return map.get(coord.getX()).get(coord.getY());
     }
 
     private void setCell(Pair<Integer, Integer> coord) {
-        final String ch = getCell(coord);
-        if (ch.equals("*")) {
-            this.map.get(coord.getX()).set(coord.getY(), " ");
-        } else {
-            this.map.get(coord.getX()).set(coord.getY(), "*");
-        }
+        final Boolean ch = getCell(coord);
+        map.get(coord.getX()).set(coord.getY(), !ch);
     }
     
 }
