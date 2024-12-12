@@ -9,16 +9,16 @@ import java.util.List;
 
 
 public class GUI extends JFrame{
-	
+
 	final List<JButton> jbs = new ArrayList<>();
 
-	public GUI(int size){
+	public GUI(final int size) {
 		final Logics logics = new LogicsImpl(size);
 		this.setSize(500, 100);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(new FlowLayout());
 		
-		ActionListener ac = e -> {
+		final ActionListener ac = e -> {
 			final JButton buttonClicked = (JButton)e.getSource();
 			final int buttonPosition = jbs.indexOf(buttonClicked);
 			buttonClicked.setText(String.valueOf(logics.hit(buttonPosition)));
@@ -28,7 +28,7 @@ public class GUI extends JFrame{
 			}
 		};
 		logics.values().forEach(v -> {
-			JButton jb = new JButton(String.valueOf(v));
+			final JButton jb = new JButton(String.valueOf(v));
 			jbs.add(jb);
 			jb.addActionListener(ac);
 			this.getContentPane().add(jb);

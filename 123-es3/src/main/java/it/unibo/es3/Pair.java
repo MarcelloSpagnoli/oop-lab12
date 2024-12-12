@@ -34,14 +34,14 @@ public class Pair<X,Y> {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pair other = (Pair) obj;
+		final Pair other = (Pair) obj;
 		if (x == null) {
 			if (other.x != null)
 				return false;
@@ -59,7 +59,4 @@ public class Pair<X,Y> {
 	public String toString() {
 		return "Pair [x=" + x + ", y=" + y + "]";
 	}
-	
-	
-
 }

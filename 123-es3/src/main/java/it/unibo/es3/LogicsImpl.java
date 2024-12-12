@@ -10,12 +10,12 @@ import java.util.stream.Collectors;
 public class LogicsImpl implements Logics{
     
     private Set<Pair<Integer, Integer>> marked;
-    private int size;
+    private final int size;
 
     LogicsImpl(final int size) {
         marked = new HashSet<>();
         this.size = size;
-        var rdm = new Random(0);
+        final var rdm = new Random(0);
         do {
             marked.add(new Pair<>(rdm.nextInt(size), rdm.nextInt(size)));
         } while (marked.size() < 3);
@@ -23,9 +23,9 @@ public class LogicsImpl implements Logics{
 
     public void nextStep() {
         final var linear = List.of(-1, 0, 1);
-        final List<Pair<Integer, Integer>> nearby = linear.stream()
-            .flatMap(horizontal ->
-                linear.stream().map(dy -> new Pair<>(horizontal, dy))
+            final List<Pair<Integer, Integer>> nearby = linear.stream()
+            .flatMap(x ->
+                linear.stream().map(y -> new Pair<>(x, y))
                     // .filter(delta -> delta.getX() != 0 && delta.getY() != 0)
             )
             .toList();
@@ -55,7 +55,7 @@ public class LogicsImpl implements Logics{
     }
 
     public boolean toQuit() {
-        return marked.size() == Math.pow(size, 2);
+        return marked.size() == this.size * this.size;
     }
 
     public int getSize() {

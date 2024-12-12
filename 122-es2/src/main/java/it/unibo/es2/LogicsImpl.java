@@ -21,7 +21,7 @@ public class LogicsImpl implements Logics{
     }
 
     @Override
-    public Boolean hit(Pair<Integer, Integer> coord) {
+    public Boolean hit(final Pair<Integer, Integer> coord) {
         setCell(coord);
         return getCell(coord);
     }
@@ -38,11 +38,11 @@ public class LogicsImpl implements Logics{
         return lines || columns;
     }
 
-    private Boolean getCell(Pair<Integer, Integer> coord) {
+    private Boolean getCell(final Pair<Integer, Integer> coord) {
         return map.get(coord.getX()).get(coord.getY());
     }
 
-    private void setCell(Pair<Integer, Integer> coord) {
+    private void setCell(final Pair<Integer, Integer> coord) {
         final Boolean ch = getCell(coord);
         map.get(coord.getX()).set(coord.getY(), !ch);
     }

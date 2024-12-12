@@ -12,7 +12,7 @@ public class GUI extends JFrame {
     private final List<JButton> cells = new ArrayList<>();
     private final Logics logics;
     
-    public GUI(int width) {
+    public GUI(final int width) {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(70*width, 70*width);
         final JButton next = new JButton(">");
@@ -54,7 +54,5 @@ public class GUI extends JFrame {
             .map(x -> x.getX() * logics.getSize() + x.getY())
             .forEach(y -> cells.get(y).setText("*"));
 
-    }
-
-    
+    }   
 }

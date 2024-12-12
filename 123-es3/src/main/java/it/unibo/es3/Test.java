@@ -16,7 +16,7 @@ public class Test {
      * eventualmente agli esercizi precedenti.
      */
 
-    public static void main(String[] args) throws java.io.IOException {
+    public static void main(final String[] args) throws java.io.IOException {
         new GUI(10); // only use odd numbers as arguments!
     }
 }

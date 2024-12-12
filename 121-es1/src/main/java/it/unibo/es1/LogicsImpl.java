@@ -10,7 +10,7 @@ public class LogicsImpl implements Logics {
 	// private Integer size; 
 	private List<Integer> values;
 
-	public LogicsImpl(int size) {
+	public LogicsImpl(final int size) {
 		// this.size = size; --> inferable from values.size
 		this.values = new ArrayList<>(Collections.nCopies(size, 0));
 		// for (int i = 0; i < size; i++) {
@@ -36,7 +36,7 @@ public class LogicsImpl implements Logics {
 	}
 
 	@Override
-	public int hit(int elem) {
+	public int hit(final int elem) {
 		Integer i = values.get(elem);
 		i++;
 		values.set(elem, i);

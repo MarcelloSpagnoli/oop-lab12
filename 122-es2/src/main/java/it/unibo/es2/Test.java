@@ -16,7 +16,7 @@ public class Test {
      * precedente. Si faccia attenzione che la logica non contenga concetta di View.
      */
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         new GUI(4);
     }
 }
